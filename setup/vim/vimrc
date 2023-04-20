@@ -1,0 +1,112 @@
+syntax enable
+
+set showmatch
+set showcmd
+set backspace=indent,eol,start
+set cindent
+set termguicolors
+set autoindent
+set smartindent
+set nu!
+set clipboard=unnamedplus
+set tabstop=2 softtabstop=2 expandtab shiftwidth=2
+set encoding=utf8
+set smartcase
+set smartindent
+set expandtab
+set nohlsearch
+set nobackup
+set noswapfile
+set nowrap
+set foldmethod=syntax
+set foldlevel=99
+
+nnoremap <space> za
+
+
+colorscheme brogrammer
+color toast
+
+""" Prettier
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+
+""" Rainbow brakets
+let g:rainbow_active = 1
+
+""" NERDTree
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+""" Fuzzy Files
+nnoremap <C-p> :GFiles<Cr>
+
+""" Nevegação entre os buffers (airline)
+set laststatus=3
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_statusline_ontop=0
+let g:airline_theme='minimalist'
+let g:airline#extensions#tabline#formatter = 'default'
+
+""" Navegação entre os buffers
+nnoremap <M-Right> :bn<cr>
+nnoremap <M-Left> :bp<cr>
+nnoremap <c-x> :bp\|bd #<cr>
+
+""" Plugin control P
+let g:ctrlp_custom_ignore = '\v[\/]\.(swp|zip)$' "Ignora a extenção de arquivo citado
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard'] "Ignora os git ginores
+let g:ctrlp_show_hidden = 1 "Exibe os arquivos ocutos
+
+""" Set my symbol indentline ▏
+let g:indentLine_char = '▏'
+let g:indentLine_enabled = 0
+
+""" Vim
+let g:indentLine_color_term = 239
+""" GVim
+let g:indentLine_color_gui = '#F40061'
+
+""" none X terminal
+let g:indentLine_color_tty_light = 7 " (default: 4)
+let g:indentLine_color_dark = 1 " (default: 2)
+
+""" Background (Vim, GVim)
+let g:indentLine_bgcolor_term = 202
+let g:indentLine_bgcolor_gui = '#050505'
+
+"""Auto closed
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml, *.jsx, *.tsx, *.js'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx, *.js'
+let g:closetag_filetypes = 'html,xhtml,phtml'
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+let g:closetag_emptyTags_caseSensitive = 0
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ 'typescriptreact': 'jsxRegion,tsxRegion',
+    \ 'javascriptreact': 'jsxRegion',
+    \ }
+
+""" Shortcut for closing tags, default is '>'
+"""Add > at current position without closing the current tag, default is ''
+let g:closetag_shortcut = '>'
+let g:closetag_close_shortcut = '<leader>>'
+
+let g:AutoPairsFlyMode = 0
+
+"Startfy
+source /home/darkstar/.vim/banner/hydra
+
+"ALE Config
+let g:ale_linters = {'python': ['flake8', 'pylint'], 'javascript': ['eslint']}
+let g:ale_completion_enabled = 0
+let g:ale_python_pylint_options = '--rcfile '.expand('~/.vim/.pylintrc')
+
+""" JEDI
+let g:jedi#auto_vim_configuration = 1
+
+"Setup CocVim
+source ~/.vim/coc.nvimrc
