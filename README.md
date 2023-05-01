@@ -91,7 +91,7 @@ label-foreground = #B9B9B9
 [module/example]
 type = custom/script
 exec = echo "Its a example"
-click-left = "firefox https://github.com/len4rdi" &
+click-left = "firefox https://github.com/rexionmars" &
 
 format = <label>
 format-prefix = "Github"
@@ -100,4 +100,4 @@ format-prefix-background = #000000
 ```
 
 ## Contributors
-![GitHub Contributors Image](https://contrib.rocks/image?repo=len4rdi/dotfiles)
+![GitHub Contributors Image](https://contrib.rocks/image?repo=rexionmars/dotfiles)
