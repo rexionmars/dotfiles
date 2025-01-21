@@ -77,6 +77,9 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -102,8 +105,15 @@
   programs.nix-ld.enable = true;
   fonts.packages = with pkgs; [ nerdfonts ];
 
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+
+  
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -113,6 +123,11 @@
     cudatoolkit
     linuxPackages.nvidia_x11
     nvidia-docker
+    libGL
+    libGLU
+    xorg.libX11
+    xorg.libXrender
+    xorg.libXext
   ];
 
   virtualisation.docker.enableNvidia = true;
